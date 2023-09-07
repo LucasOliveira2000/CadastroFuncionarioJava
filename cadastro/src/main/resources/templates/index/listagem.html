@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{template.html}"
+>
+<head>
+    <title>Lista de Funcionarios</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h1>Lista de Funcionarios</h1>
+    <a href="/home/funcionario">Novo</a>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>NOME</th>
+                <th>IDADE</th>
+                <th>DATA DE NASCIMENTO</th>
+                <th>FUNÇÃO</th>
+                <th>MODELO DE TRABALHO</th>
+                <th>TIPO DE CONTRATO</th>
+                <th>AÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="funcionario : ${lista}">
+
+                <td th:text="${funcionario.nome}"> </td>
+
+                <td th:text="${funcionario.idade}"></td>
+
+                <td th:text="${funcionario.nascimento}"></td>
+
+                <td th:text="${funcionario.funcao}"></td>
+
+                <td th:text="${funcionario.modelo}"></td>
+
+                <td th:text="${funcionario.contrato}"></td>
+
+                <td>
+                    <a th:href="@{/home/funcionario?id={id}(id=${funcionario.id})}">Editar</a>
+
+                    <form action="/home" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="id" th:value="${funcionario.id}">
+                        <input type="submit" value="Excluir">
+                    </form>
+
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

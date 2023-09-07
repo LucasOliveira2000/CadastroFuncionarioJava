@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}"
+>
+<head>
+
+    <title>Index</title>
+</head>
+
+<body>
+    <div layout:fragment="conteudo">
+
+        <h1>Sistema de Cadastro de Funcionario</h1>
+
+        <form method="post" action="/home">
+
+            <input type="hidden" name="_method" value="put" th:if="${funcionario != null}">
+            <input type="hidden" name="id" th:value="${funcionario?.id}">
+
+            <div>
+                <label for="nome">Nome:</label>
+                <input id="nome" name="nome" th:value="${funcionario?.nome}">
+            </div>
+                <br/>
+            <div>
+                <label for="idade">Idade:</label>
+                <input id="idade" name="idade" th:value="${funcionario?.idade}">
+            </div>
+                <br/>
+            <div>
+                <label for="nascimento">Data de Nascimento:</label>
+                <input id="nascimento" name="nascimento" th:value="${funcionario?.nascimento}">
+            </div>
+                <br/>
+            <div>
+                <label for="funcao">Função na Empresa:</label>
+                <input id="funcao" name="funcao" th:value="${funcionario?.funcao}">
+            </div>
+                <br/>
+            <div>
+                <label for="modelo">Modelo de Trabalho:</label>
+                <input id="modelo" name="modelo" th:value="${funcionario?.modelo}">
+            </div>
+                <br/>
+            <div>
+                <label for="contrato">Contrato - CLT ou PJ:</label>
+                <input id="contrato" name="contrato" th:value="${funcionario?.contrato}">
+            </div>
+                <br/>
+            <div>
+                <input type="submit" value="Cadastrar">
+            </div>
+
+        </form>
+    </div>
+</body>
+
+
+</html>
